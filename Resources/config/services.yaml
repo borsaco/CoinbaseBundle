@@ -1,0 +1,2 @@
+services:
+    Borsaco\CoinbaseBundle\Handler\CoinbaseHandler: ~
