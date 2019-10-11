@@ -1,5 +1,6 @@
 # CoinbaseBundle
 Coinbase Commerce Bundle for Symfony
+This is a repaired copy of https://github.com/mehmetsen80/cbcommercesymfonybundle
 
 ## API Reference
 
