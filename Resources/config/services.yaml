@@ -1,2 +1,4 @@
 services:
-    Borsaco\CoinbaseBundle\Handler\CoinbaseHandler: ~
+    Borsaco\CoinbaseBundle\Handler\CoinbaseHandler:
+        arguments: ['@service_container']
+    
