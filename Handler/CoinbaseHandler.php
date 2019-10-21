@@ -73,7 +73,7 @@ class CoinbaseHandler
         $json = json_decode($jsonString);
         $jsonArray = json_decode($jsonString, true);
 
-        if(!is_array($json)) { 
+        if(!is_array($jsonArray)) { 
             return null;
         }
 
