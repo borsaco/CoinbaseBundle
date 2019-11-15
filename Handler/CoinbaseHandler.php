@@ -18,6 +18,7 @@ use Borsaco\CoinbaseBundle\Model\Webhook;
 use Borsaco\CoinbaseBundle\Model\Value;
 use Borsaco\CoinbaseBundle\Util\Castable;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class CoinbaseHandler
 {
@@ -50,12 +51,11 @@ class CoinbaseHandler
         return $this->parseCharge($jsonString);
     }
 
-    public function parseWebhook($jsonString){
-
-
+    public function parseWebhook($jsonString)
+    {
         $json = json_decode($jsonString);
 
-        if(!is_array($input)) { 
+        if(!is_object($json)) {
             return null;
         }
 
@@ -229,8 +229,8 @@ class CoinbaseHandler
      * @param string $cc_signature, string $secret, JSON $request
      * @return boolean
      */
-    public function validateWebhookSignature($cc_signature, $request) {
-        if ($cc_signature != hash_hmac('SHA256', $request , $this->getCommerceClient()->getWebhooksecret())){
+    public function validateWebhookSignature($cc_signature, Request $request) {
+        if ($cc_signature != hash_hmac('SHA256', $request->getContent() , $this->getCommerceClient()->getWebhooksecret())){
             return false;
         }
         return true;
