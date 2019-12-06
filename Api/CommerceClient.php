@@ -70,9 +70,8 @@ class CommerceClient
                 $this->status = $response->getReasonPhrase();
                 $this->statuscode = $response->getStatusCode();
             }
-        } catch (GuzzleException $e) {
-            $this->status = $e->getMessage();
-            $this->statuscode = $e->getCode();
+        } catch (GuzzleException $exception) {
+            throw $exception;
         }
 
     }
@@ -102,10 +101,8 @@ class CommerceClient
                 return null;
             }
 
-        } catch (GuzzleException $e) {
-            $this->status = $e->getMessage();
-            $this->statuscode = $e->getCode();
-            return null;
+        } catch (GuzzleException $exception) {
+            throw $exception;
         }
 
         return $content;
@@ -132,10 +129,8 @@ class CommerceClient
                 $this->statuscode = $response->getStatusCode();
                 return null;
             }
-        } catch (GuzzleException $e) {
-            $this->status = $e->getMessage();
-            $this->statuscode = $e->getCode();
-            return null;
+        } catch (GuzzleException $exception) {
+            throw $exception;
         }
 
         return $content;
@@ -163,10 +158,8 @@ class CommerceClient
                 $this->statuscode = $response->getStatusCode();
                 return null;
             }
-        } catch (GuzzleException $e) {
-            $this->status = $e->getMessage();
-            $this->statuscode = $e->getCode();
-            return null;
+        } catch (GuzzleException $exception) {
+            throw $exception;
         }
 
         return $content;
